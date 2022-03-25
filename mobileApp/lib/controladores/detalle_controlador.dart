@@ -1,15 +1,17 @@
 import 'package:get/get.dart';
 import 'package:mis_peliculas/paginas/home/home_page.dart';
 
+import '../models/pelicula.dart';
+
 class DetalleControlador extends GetxController {
+  late Pelicula _pelicula;
+  Pelicula get pelicula => _pelicula;
+
   @override
-  void onReady() {
-    super.onReady();
-    Future.delayed(Duration(seconds: 2), () {
-      Get.to(
-        HomePage(),
-        transition: Transition.zoom,
-      );
-    });
+  void onInit() {
+    super.onInit();
+
+    _pelicula = Get.arguments as Pelicula;
+    print("Get.arguments ${Get.arguments}");
   }
 }

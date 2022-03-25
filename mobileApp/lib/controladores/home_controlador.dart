@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:mis_peliculas/api/peliculas_api.dart';
 import 'package:mis_peliculas/models/pelicula.dart';
+import 'package:mis_peliculas/paginas/detalle/detalle_page.dart';
 
 class HomeControlador extends GetxController {
   List<Pelicula>? _peliculas = [];
+
   List<Pelicula>? get peliculas => _peliculas;
 
   Future<void> cargaPeliculas() async {
@@ -16,5 +18,12 @@ class HomeControlador extends GetxController {
   void onReady() {
     super.onReady();
     cargaPeliculas();
+  }
+
+  showDetallePelicula(Pelicula pelicula) {
+    Get.to(
+      DetallePage(),
+      arguments: pelicula,
+    );
   }
 }

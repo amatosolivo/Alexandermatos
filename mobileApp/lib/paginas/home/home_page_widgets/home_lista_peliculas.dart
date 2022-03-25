@@ -18,6 +18,7 @@ class HomeListaPeliculas extends StatelessWidget {
               return ListTile(
                 title: Text(pelicula.titulo),
                 subtitle: Text(pelicula.rating.toString()),
+                onTap: () => _.showDetallePelicula(pelicula),
               );
             },
             itemCount: _.peliculas?.length,
