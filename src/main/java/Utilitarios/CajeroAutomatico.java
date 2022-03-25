@@ -33,7 +33,7 @@ public class CajeroAutomatico {
 
             if (cantidad <= 1.5 && cantidad <= 3) {
                 desgloce.put(String.valueOf(billete), String.valueOf((int)(cantidad)));
-                monto = monto - billete;
+                monto = monto - (billete * Math.abs(cantidad));
             }
             i++;
         }

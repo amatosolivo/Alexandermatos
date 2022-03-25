@@ -7,36 +7,30 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GeneradorNumerico {
-    public static final int generaAleatorio() {
-        int min = 1;
-        int max = 100;
-        return (int)Math.floor(Math.random()*(max-min)+1);
+    public static final int[] generaAleatorio(int cantidad) {
+        // Validaciones
+        if (cantidad > 20) { throw new IllegalArgumentException("Solo puede pedir un maximo de 20 aletorios"); }
+        if (cantidad == 0) { throw new IllegalArgumentException("La cantidad minima de aleatorios debe ser mayor que cero"); }
+
+        // Proceso: Genera numeros aleatorios distintos entre 1 y 100
+        IntStream aleatorios = IntStream.generate(() -> { return (int)(Math.floor(Math.random() * (100 - 1) + 1)); }).distinct();
+        return aleatorios.limit(cantidad).toArray();
     }
 
-    public static final Set<Integer> cantidadAleatorios(int n) {
-        if (n > 20 ) {
-            throw new InvalidParameterException("La cantidad de aleatorios no puede ser mayor de 20");
-        } else if (n == 0) {
-            n = 5;
-        }
+    public static final List<Integer> generarPrimos(int cantidad) {
+        // Predicado
+        IntPredicate esprimo = n ->  IntMath.isPrime(n);
 
-        Set<Integer> unicosAletorios = new HashSet<Integer>();
-        for (int i = 1; i <= n; i++) {
-            unicosAletorios.add(generaAleatorio());
-        }
+        // Origen
+        IntStream fuente = IntStream.range(1,100);
 
-        return unicosAletorios;
-    }
-
-    public static final List<String> generarPrimos(int cantidad) {
-        List<String> resultado = new ArrayList<String>();
-        for(int i = 1; i <= cantidad; i++) {
-            if (IntMath.isPrime(i)) {
-                resultado.add(String.valueOf(i));
-            }
-        }
-        return resultado;
+        // Proceso
+        List<Integer> primos = fuente.filter(esprimo).boxed().collect(Collectors.toList());
+        return primos.stream().limit(cantidad).toList();
     }
 }
