@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mis_peliculas/controladores/detalle_controlador.dart';
@@ -10,8 +11,24 @@ class DetallePage extends StatelessWidget {
     return GetBuilder<DetalleControlador>(
       init: DetalleControlador(),
       builder: (_) => Scaffold(
-        body: Center(
-          child: Text("${_.pelicula.titulo} ${_.pelicula.rating}"),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: ()=> Get.back(),
+          ),
+        ),
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text("${_.pelicula.titulo} ${_.pelicula.rating}"),
+              CupertinoButton(
+                child: Text("Agregar a Favoritos"),
+                onPressed: _.guardarEnFavoritos,
+              ),
+            ],
+          ),
         ),
       ),
     );

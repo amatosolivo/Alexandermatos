@@ -20,10 +20,13 @@ class HomeControlador extends GetxController {
     cargaPeliculas();
   }
 
-  showDetallePelicula(Pelicula pelicula) {
-    Get.to(
+  Future<void> showDetallePelicula(Pelicula pelicula) async {
+    final resultado = await Get.to<String>(
       DetallePage(),
       arguments: pelicula,
     );
+    if (resultado!=null) {
+      print("resultado $resultado");
+    }
   }
 }

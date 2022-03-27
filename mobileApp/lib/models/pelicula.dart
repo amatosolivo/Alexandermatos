@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Pelicula {
   final int id;
   final String titulo;
@@ -12,6 +14,8 @@ class Pelicula {
     required this.overview,
     required this.posterPath,
   });
+
+  String get urlImagenPelicula => 'https://image.tmdb.org/t/p/w500$posterPath';
 
   static Pelicula fromJson(Map<String, dynamic> json) {
     return Pelicula(
