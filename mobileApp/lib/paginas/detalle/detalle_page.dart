@@ -24,16 +24,36 @@ class DetallePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: 500,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(_.pelicula.urlImagenPelicula),
-                  )
-                ),
+                    image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(_.pelicula.urlImagenPelicula),
+                )),
               ),
-              SizedBox(height: 10,),
-              Text("${_.pelicula.titulo} ${_.pelicula.rating}"),
-              SizedBox(height: 10,),
-              FloatingActionButton(onPressed: () =>_.guardarEnFavoritos(_.pelicula.id), child: Icon(Icons.star),)
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "${_.pelicula.titulo}",
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "${_.pelicula.rating}",
+                style: TextStyle(
+                    fontSize: 16),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              FloatingActionButton(
+                onPressed: () => _.guardarEnFavoritos(_.pelicula.id),
+                child: Icon(Icons.star),
+              )
             ],
           ),
         ),
