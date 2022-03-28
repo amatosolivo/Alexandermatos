@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,16 +45,14 @@ class DetallePage extends StatelessWidget {
               ),
               Text(
                 "${_.pelicula.rating}",
-                style: TextStyle(
-                    fontSize: 16),
+                style: TextStyle(fontSize: 16),
               ),
               SizedBox(
                 height: 10,
               ),
-              FloatingActionButton(
-                onPressed: () => _.guardarEnFavoritos(_.pelicula.id),
-                child: Icon(Icons.star),
-              )
+              FavoriteButton(valueChanged: (_favorita) {
+                print('Es favorita : $_favorita');
+              })
             ],
           ),
         ),
