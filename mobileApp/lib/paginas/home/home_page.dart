@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               print("Ver favoritos");
             },
-            child: Icon(Icons.star),
+            child: Icon(Icons.filter),
           ),
         );
       },

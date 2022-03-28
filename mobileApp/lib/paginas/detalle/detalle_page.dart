@@ -14,19 +14,26 @@ class DetallePage extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: ()=> Get.back(),
+            onPressed: () => Get.back(),
           ),
         ),
         body: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("${_.pelicula.titulo} ${_.pelicula.rating}"),
-              CupertinoButton(
-                child: Text("Agregar a Favoritos"),
-                onPressed: _.guardarEnFavoritos,
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 500,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(_.pelicula.urlImagenPelicula),
+                  )
+                ),
               ),
+              SizedBox(height: 10,),
+              Text("${_.pelicula.titulo} ${_.pelicula.rating}"),
+              SizedBox(height: 10,),
+              FloatingActionButton(onPressed: () =>_.guardarEnFavoritos(_.pelicula.id), child: Icon(Icons.star),)
             ],
           ),
         ),

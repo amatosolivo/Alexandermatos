@@ -17,19 +17,9 @@ class DetalleControlador extends GetxController {
     print("Get.arguments ${Get.arguments}");
   }
 
-  void guardarEnFavoritos() {
+  void guardarEnFavoritos(int id) {
     // Guardar la pelicula en favoritos y luego mostrar dialogo de proceso exitoso
     
-    Get.dialog(AlertDialog(
-      title: Text("CONFIRMADO!"),
-      content: Text("\"${pelicula.titulo}\" ha sido agregada a favoritos!"),
-      actions: [
-        TextButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: Text("Ok"))
-      ],
-    ));
+    Get.back(result: "Hola desde la pagina de detalle $id");
   }
 }
