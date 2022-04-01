@@ -27,7 +27,7 @@ public class GeneradorNumerico {
         IntPredicate esprimo = n ->  IntMath.isPrime(n);
 
         // Origen
-        IntStream fuente = IntStream.range(1,100);
+        IntStream fuente = IntStream.rangeClosed(1,100);
 
         // Proceso
         List<Integer> primos = fuente.filter(esprimo).boxed().collect(Collectors.toList());
