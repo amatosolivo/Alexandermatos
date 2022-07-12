@@ -19,11 +19,12 @@ class DetallePage extends StatelessWidget {
           ),
         ),
         body: SafeArea(
+          minimum: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 500,
+                height: 450,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   fit: BoxFit.fill,
@@ -48,7 +49,7 @@ class DetallePage extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
               FavoriteButton(valueChanged: (_favorita) {
                 print('Es favorita : $_favorita');
